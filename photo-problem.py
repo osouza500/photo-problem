@@ -19,4 +19,8 @@ for arquivos in originais:
     if palavra_chave not in lugares:
         lugares.append(palavra_chave)
 
+for arquivos in originais:
+    lugar = extrair_palavra(arquivos)
+    os.rename(arquivos, os.path.join(lugar, arquivos))
+
 # criar_diretorio(lugares)
