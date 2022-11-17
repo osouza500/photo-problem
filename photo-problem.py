@@ -10,17 +10,21 @@ def extrair_palavra(nome_arquivo):
 def criar_diretorio(lugares):
     for lugar in lugares:
         os.mkdir(lugar)
-    
-os.chdir("Photos")
-originais = os.listdir()
-lugares = []
-for arquivos in originais:
-    palavra_chave = extrair_palavra(arquivos)
-    if palavra_chave not in lugares:
-        lugares.append(palavra_chave)
 
-for arquivos in originais:
-    lugar = extrair_palavra(arquivos)
-    os.rename(arquivos, os.path.join(lugar, arquivos))
+#Esta função extrai a palavra-chave, cria o diretório de acordo com ela e move os
+#arquivos para as pastas correspondentes.
+def organizar_fotos(diretorio):    
+    os.chdir(diretorio)
+    originais = os.listdir()
+    lugares = []
+    for arquivos in originais:
+        palavra_chave = extrair_palavra(arquivos)
+        if palavra_chave not in lugares:
+            lugares.append(palavra_chave)
+    criar_diretorio(lugares)
+    for arquivos in originais:
+        lugar = extrair_palavra(arquivos)
+        os.rename(arquivos, 
+                 os.path.join(lugar, arquivos))
 
-# criar_diretorio(lugares)
+organizar_fotos("Photos")
