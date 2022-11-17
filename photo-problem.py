@@ -5,6 +5,8 @@ import os
 def extrair_palavra(nome_arquivo):
     return nome_arquivo.split("_")[1]
 
+# A função a seguir cria um diretório de acordo com a palavra-chave extraída do
+# nome do arquivo e anexada à lista "lugares".
 def criar_diretorio(lugares):
     for lugar in lugares:
         os.mkdir(lugar)
